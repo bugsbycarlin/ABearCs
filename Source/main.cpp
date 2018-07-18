@@ -1,5 +1,9 @@
 #include <string>
 
+#ifdef __APPLE__
+#include "CoreFoundation/CoreFoundation.h"
+#endif
+
 #include "window.h"
 #include "logic.h"
 #include "hotconfig.h"
@@ -68,8 +72,38 @@ std::string pictures[] = {
   "zebra"
 };
 
+// https://bits.mdminhazulhaque.io/cpp/find-and-replace-all-occurrences-in-cpp-string.html
+void find_and_replace(std::string& source, std::string const& find, std::string const& replace)
+{
+  for(std::string::size_type i = 0; (i = source.find(find, i)) != std::string::npos;)
+  {
+    source.replace(i, find.length(), replace);
+    i += replace.length();
+  }
+}
+
 int main(int argc, char* args[]) {
-  // Load configuration
+
+  // Fix it for App Bundling
+  #ifdef __APPLE__    
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    char path[PATH_MAX];
+    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
+    {
+        // error!
+    }
+    CFRelease(resourcesURL);
+
+    std::string mod_path(path);
+    find_and_replace(mod_path, "Contents/Resources", "Contents/MacOS");
+
+    chdir(mod_path.c_str());
+    printf("Current Path: %s\n", mod_path.c_str());
+  #endif
+
+  // Load configuration, after setting the right path with mod_path.
+  hot_config->setPath(mod_path + "/config.txt");
   if(hot_config->checkAndUpdate() != hot_config->SUCCESS) {
     exit(1);
   }
@@ -118,7 +152,7 @@ int main(int argc, char* args[]) {
 
     // do stuff with input
     for (int i = 0; i < 26; i++) {
-      if (input->keyDown(letters[i]) && !logic->isTimeLocked("key_swap")) {
+      if (input->keyDown(letters[i]) && !logic->isTimeLocked("key_swap") && i != current_letter) {
         logic->remove("sound_lock");
         logic->makeTimeLock("key_swap", key_swap_duration);
         logic->makeTimeLock("animation", animation_duration);
