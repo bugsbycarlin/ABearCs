@@ -5,7 +5,7 @@
   <key>CFBundleGetInfoString</key>
   <string>ABearCs</string>
   <key>CFBundleExecutable</key>
-  <string>ABearCs</string>
+  <string>launch</string>
   <key>CFBundleIdentifier</key>
   <string>FriendsOnMountains</string>
   <key>CFBundleName</key>

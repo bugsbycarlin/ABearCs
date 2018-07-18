@@ -3,7 +3,7 @@ import os
 honey_version = "0_09"
 
 env=Environment()
-env.Append(CXXFLAGS = "-std=c++11 -mmacosx-version-min=10.10")
+env.Append(CXXFLAGS = "-std=c++11")
 
 libraries = ["libHoney.a"]
 
