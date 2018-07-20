@@ -7,7 +7,7 @@ env.Append(CXXFLAGS = "-std=c++11")
 
 libraries = ["libHoney.a"]
 
-env.AppendUnique(FRAMEWORKS = Split("CoreFoundation OpenGL SDL2 SDL2_image SDL2_mixer"))
+env.AppendUnique(FRAMEWORKS = Split("OpenGL SDL2 SDL2_image SDL2_mixer"))
 
 ABearCs = env.Program(target = "ABearCs",
   source = Glob("./Source/*.cpp"),
