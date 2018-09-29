@@ -1,19 +1,89 @@
 <section name="layout">
   <param type="int" name="screen_width">960</param>
   <param type="int" name="screen_height">600</param>
-  <param type="bool" name="full_screen">true</param>
-  <param type="string" name="screen_color">#CCCCCC</param>
+  <param type="bool" name="full_screen">false</param>
+  <param type="string" name="screen_color">#F0F0F0</param>
+
   <param type="int" name="picture_x">50</param>
   <param type="int" name="picture_y">100</param>
   <param type="int" name="text_x">510</param>
   <param type="int" name="text_y">100</param>
+
+  <param type="string" name="font">Fonts/SuperMario256.ttf</param>
+  <param type="int" name="number_text_y">510</param>
+  <param type="int" name="number_text_font_size">55</param>
+  <param type="int" name="color_text_y">510</param>
+  <param type="int" name="color_text_font_size">55</param>
+  <param type="int" name="shape_text_y">510</param>
+  <param type="int" name="shape_text_font_size">55</param>
+
+  <param type="int" name="shape_margin_1">0</param>
+  <param type="int" name="shape_x_1">480</param>
+  <param type="int" name="shape_y_1">260</param>
+
+  <param type="int" name="shape_margin_2">260</param>
+  <param type="int" name="shape_x_2">480</param>
+  <param type="int" name="shape_y_2">260</param>
+
+  <param type="int" name="shape_margin_3">240</param>
+  <param type="int" name="shape_x_3">480</param>
+  <param type="int" name="shape_y_3">260</param>
+
+  <param type="int" name="shape_margin_4">220</param>
+  <param type="int" name="shape_x_4">480</param>
+  <param type="int" name="shape_y_4">260</param>
+
+  <param type="int" name="shape_margin_5">180</param>
+  <param type="int" name="shape_x_5">480</param>
+  <param type="int" name="shape_y_5">160</param>
+
+  <param type="int" name="shape_margin_6">180</param>
+  <param type="int" name="shape_x_6">480</param>
+  <param type="int" name="shape_y_6">160</param>
+
+  <param type="int" name="shape_margin_7">180</param>
+  <param type="int" name="shape_x_7">480</param>
+  <param type="int" name="shape_y_7">160</param>
+
+  <param type="int" name="shape_margin_8">180</param>
+  <param type="int" name="shape_x_8">480</param>
+  <param type="int" name="shape_y_8">160</param>
+
+  <param type="int" name="shape_margin_9">180</param>
+  <param type="int" name="shape_x_9">480</param>
+  <param type="int" name="shape_y_9">160</param>
+
+  <param type="int" name="shape_margin_10">180</param>
+  <param type="int" name="shape_x_10">480</param>
+  <param type="int" name="shape_y_10">160</param>
+</section>
+
+<section name="colors">
+  <param type="string" name="Green">#77dd77</param>
+  <param type="string" name="Red">#ff4941</param>
+  <param type="string" name="Grey">#c0c0c0</param>
+  <param type="string" name="Blue">#5284bd</param>
+  <param type="string" name="Purple">#917394</param>
+  <param type="string" name="Orange">#ffa82e</param>
+  <param type="string" name="Yellow">#ffd700</param>
+  <param type="string" name="Black">#444444</param>
+  <param type="string" name="Pink">#ffb6c1</param>
+  <param type="string" name="Brown">#835c3b</param>
 </section>
 
 <section name="animation">
+  <!-- ABearCs -->
   <param type="float" name="animation_duration">0.5</param>
   <param type="int" name="tween_type">1</param>
   <param type="int" name="shake_width">6</param>
   <param type="float" name="shake_duration">0.25</param>
+
+  <!-- OneRedStar -->
+  <param type="float" name="fade_in_duration">0.4</param>
+  <param type="float" name="word_duration">0.9</param>
+  <param type="float" name="fade_out_stagger">0.1</param>
+  <param type="float" name="fade_out_duration">0.3</param>
+  <param type="float" name="oneredstar_shake_width">10</param>
 </section>
 
 <section name="input">
@@ -24,3 +94,5 @@
   <param type="float" name="sound_volume">1.0</param>
   <param type="float" name="sound_lock_duration">3.0</param>
 </section>
+
+
