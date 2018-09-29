@@ -1,13 +1,13 @@
 import os
 
-honey_version = "0_09"
+honey_version = "0_15"
 
 env=Environment()
 env.Append(CXXFLAGS = "-std=c++11")
 
 libraries = ["libHoney.a"]
 
-env.AppendUnique(FRAMEWORKS = Split("OpenGL SDL2 SDL2_image SDL2_mixer"))
+env.AppendUnique(FRAMEWORKS = Split("OpenGL SDL2 SDL2_image SDL2_mixer SDL2_ttf"))
 
 ABearCs = env.Program(target = "ABearCs",
   source = Glob("./Source/*.cpp"),
