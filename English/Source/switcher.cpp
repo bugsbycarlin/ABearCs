@@ -10,24 +10,43 @@ using namespace std;
 using namespace Honey;
 
 Switcher::Switcher() {
-  graphics.addImage("abearcs_icon", "Art/abearcs_icon.png");
-  graphics.addImage("oneredstar_icon", "Art/oneredstar_icon.png");
-
-  number_text = new Textbox(
+  nav_text = new Textbox(
     hot_config.getString("layout", "font"), 30,
     "a", origin, "#000000");
 
-  makeOrSet("abearcs");
+  makeOrSet("puzzle");
+
+  switch_counter = 3;
+  max_screen = 5;
 }
 
 void Switcher::logic() {
-  if(screenmanager.getCurrentScreen() == "abearcs") {
-    if (input.keyDown("1")) {
-      makeOrSet("oneredstar");
-    }
-  } else {
-    if (input.keyDown("z")) {
+  bool switched = false;
+  if (input.threeQuickKey("right") && !timing.locked("switcher_key") && switch_counter < max_screen) {
+    switch_counter += 1;
+    switched = true;
+  } else if (input.threeQuickKey("left") && !timing.locked("switcher_key") && switch_counter > 0) {
+    switch_counter -= 1;
+    switched = true;
+  }
+
+  if (switched) {
+    sound.stopMusic();
+    sound.stopSound();
+    timing.lock("switcher_key", 0.25);
+
+    if (switch_counter == 0) {
       makeOrSet("abearcs");
+    } else if (switch_counter == 1) {
+      makeOrSet("oneredstar");
+    } else if (switch_counter == 2) {
+      makeOrSet("spelling");
+    } else if (switch_counter == 3) {
+      makeOrSet("puzzle");
+    } else if (switch_counter == 4) {
+      makeOrSet("keyboard");
+    } else if (switch_counter == 5) {
+      makeOrSet("countup");
     }
   }
 }
@@ -37,42 +56,52 @@ void Switcher::render() {
   int screen_height = hot_config.getInt("layout", "screen_height");
   graphics.setColor(1.0, 1.0, 1.0, 1.0);
 
-  if(screenmanager.getCurrentScreen() == "abearcs") {
-    graphics.drawImage("oneredstar_icon", screen_width - 74, 0, false, 0, 0.5);
-    number_text->setText("1");
-    number_text->draw((position) {screen_width - 74 - 22, 2});
-  } else {
-    graphics.drawImage("abearcs_icon", screen_width - 74, 0, false, 0, 0.5);
-    number_text->setText("z");
-    number_text->draw((position) {screen_width - 74 - 22, 2});
+  if (switch_counter > 0) {
+    nav_text->setText("<<<");
+    nav_text->draw((position) {10, 10});
+  }
+
+  if (switch_counter < max_screen) {
+    nav_text->setText(">>>");
+    nav_text->draw((position) {screen_width - 85, 10});
   }
 }
 
 void Switcher::makeOrSet(string screen_name) {
   if (!screenmanager.checkScreen(screen_name)) {
     if (screen_name == "abearcs") {
-      // Create the screen
       unique_ptr<Screen> abearcs(new ABearCs());
       screenmanager.addScreen("abearcs", abearcs);
       screenmanager.setCurrentScreen("abearcs");
-
-      // Initialize the selection screen
-      screenmanager.initialize();
     } else if (screen_name == "oneredstar") {
-      // Create the screen
       unique_ptr<Screen> oneredstar(new OneRedStar());
       screenmanager.addScreen("oneredstar", oneredstar);
       screenmanager.setCurrentScreen("oneredstar");
-
-      // Initialize the selection screen
-      screenmanager.initialize();
-    
+    } else if (screen_name == "puzzle") {
+      unique_ptr<Screen> puzzle(new Puzzle());
+      screenmanager.addScreen("puzzle", puzzle);
+      screenmanager.setCurrentScreen("puzzle");
+    } else if (screen_name == "spelling") {
+      unique_ptr<Screen> spelling(new Spelling());
+      screenmanager.addScreen("spelling", spelling);
+      screenmanager.setCurrentScreen("spelling");
+    } else if (screen_name == "keyboard") {
+      unique_ptr<Screen> keyboard(new Keyboard());
+      screenmanager.addScreen("keyboard", keyboard);
+      screenmanager.setCurrentScreen("keyboard");
+    } else if (screen_name == "countup") {
+      unique_ptr<Screen> countup(new CountUp());
+      screenmanager.addScreen("countup", countup);
+      screenmanager.setCurrentScreen("countup");
     }
+
+    // Initialize the selection screen
+    screenmanager.initialize();
   }
 
   screenmanager.setCurrentScreen(screen_name);
 }
 
 Switcher::~Switcher() {
-  delete number_text;
+  delete nav_text;
 }

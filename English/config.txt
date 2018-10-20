@@ -9,6 +9,14 @@
   <param type="int" name="text_x">510</param>
   <param type="int" name="text_y">100</param>
 
+  <param type="int" name="countup_number_x">160</param>
+  <param type="int" name="countup_number_y">200</param>
+  <param type="int" name="countup_picture_x">680</param>
+  <param type="int" name="countup_picture_y">300</param>
+  <param type="string" name="countup_font">Fonts/RubikMonoOne.ttf</param>
+  <param type="int" name="countup_font_size">200</param>
+  <param type="int" name="countup_number_spacing">85</param>
+
   <param type="string" name="font">Fonts/SuperMario256.ttf</param>
   <param type="int" name="number_text_y">510</param>
   <param type="int" name="number_text_font_size">55</param>
@@ -16,6 +24,11 @@
   <param type="int" name="color_text_font_size">55</param>
   <param type="int" name="shape_text_y">510</param>
   <param type="int" name="shape_text_font_size">55</param>
+
+  <param type="string" name="spelling_font">Fonts/RubikMonoOne.ttf</param>
+  <param type="int" name="spelling_font_size">120</param>
+  <param type="int" name="spelling_text_x">100</param>
+  <param type="int" name="spelling_text_y">220</param>
 
   <param type="int" name="shape_margin_1">0</param>
   <param type="int" name="shape_x_1">480</param>

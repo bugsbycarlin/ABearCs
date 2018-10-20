@@ -27,7 +27,7 @@ void ABearCs::initialize() {
   for (int i = 0; i < 26; i++) {
     graphics.addImage(letters[i], "Art/" + letters[i] + ".png");
     graphics.addImage(pictures[i], "Art/" + pictures[i] + ".png");
-    sound.addSound(letters[i], "Sound/" + letters[i] + ".wav");
+    sound.addSound(letters[i], "Sound/" + letters[i] + "_" + pictures[i] + ".wav");
   }
 }
 

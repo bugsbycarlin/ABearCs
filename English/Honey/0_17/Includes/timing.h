@@ -161,9 +161,8 @@ namespace Honey {
       
       @param label Name of the label.
       @param sequence_timing list of delays between increments.
-      @param action function pointer to an action function which takes integer sequence value and float sequence timing as parameters.
+      @param action std::function, void(int, float), which takes sequence value and sequence timing as parameters.
     */
-    //void makeSequenceWithFunction(string label, vector<float> sequence_timing, void (*action)(int, float));
     void makeSequenceWithFunction(string label, vector<float> sequence_timing, function<void(int, float)> action);
 
     /*!
@@ -201,10 +200,6 @@ namespace Honey {
 
     unordered_map<string, vector<float>> sequence_timings;
     unordered_map<string, int> sequence_counters;
-    
-
-
-    //unordered_map<string, void(*)(int, float)> sequence_actions;
     unordered_map<string, function<void(int, float)>> sequence_actions;
   };
 
