@@ -1,0 +1,30 @@
+<section name="layout">
+  <param type="int" name="screen_width">960</param>
+  <param type="int" name="screen_height">600</param>
+  <param type="bool" name="full_screen">false</param>
+  <param type="string" name="screen_color">#F0F0F0</param>
+
+  <param type="int" name="abearcs_picture_x">50</param>
+  <param type="int" name="abearcs_picture_y">100</param>
+  <param type="int" name="abearcs_text_x">510</param>
+  <param type="int" name="abearcs_text_y">100</param>
+</section>
+
+<section name="animation">
+  <!-- ABearCs -->
+  <param type="float" name="animation_duration">0.5</param>
+  <param type="int" name="tween_type">1</param>
+  <param type="int" name="shake_width">6</param>
+  <param type="float" name="shake_duration">0.25</param>
+</section>
+
+<section name="input">
+  <param type="float" name="key_swap_duration">2.0</param>
+</section>
+
+<section name="sound">
+  <param type="float" name="sound_volume">1.0</param>
+  <param type="float" name="sound_lock_duration">3.0</param>
+</section>
+
+
