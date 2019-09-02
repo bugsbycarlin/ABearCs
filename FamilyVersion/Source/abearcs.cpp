@@ -64,6 +64,11 @@ void ABearCs::initialize() {
   sound.addSound("nainai", "Sound/nainai.wav");
   sound.addSound("yeye", "Sound/yeye.wav");
 
+  sound.addSound("button_sound", "Sound/button_sound.wav");
+  sound.addMusic("gypsy_jazz", "Sound/gypsy_jazz.wav");
+
+  sound.playMusic("gypsy_jazz", -1);
+
   key_to_letter["b"].push_back("baba");
   key_to_letter["b"].push_back("baobao");
   key_to_letter["g"].push_back("gougou");
@@ -111,9 +116,11 @@ void ABearCs::logic() {
   int shake_width = hot_config.getInt("animation", "shake_width");
   float key_swap_duration = hot_config.getFloat("input", "key_swap_duration");
   float sound_volume = hot_config.getFloat("sound", "sound_volume");
+  float music_volume = hot_config.getFloat("sound", "music_volume");
   float sound_lock_duration = hot_config.getFloat("sound", "sound_lock_duration");
 
   sound.setSoundVolume(sound_volume);
+  sound.setSoundVolume(music_volume);
 
   if (current_letter == "") {
     timing.remove("sound_lock");
@@ -125,22 +132,32 @@ void ABearCs::logic() {
     current_letter = letters[math_utils.randomInt(0,25)];
   }
 
+  int input_val = -1;
+  for (int i = 0; i <= 9; i++) {
+    if (!timing.locked("key_swap") && input.anyKeyPressed()) {
+      input_val = math_utils.randomInt(0, 25);
+    }
+  }
+
   // do stuff with input
   for (int i = 0; i < 26; i++) {
     if (input.keyDown(letters[i]) && !timing.locked("key_swap")) {
-      //if (key_to_letter[letters[i]].size() > 1 || letters[i] != current_letter) {
-      timing.remove("sound_lock");
-      timing.lock("key_swap", key_swap_duration);
-      timing.lock("animation", animation_duration);
-      effects.makeTween("slide_last_letter", screen_height, 0, animation_duration);
-      effects.start("slide_last_letter");
-      last_letter = current_letter;
-      int size = key_to_letter[letters[i]].size();
-      printf("The size is %lu\n", key_to_letter[letters[i]].size());
-      current_letter = key_to_letter[letters[i]][math_utils.randomInt(0, size)];
-      printf("The letter is %s\n", current_letter.c_str());
-      //}
+      input_val = i;
     }
+  }
+
+  if (input_val > -1) {
+    timing.remove("sound_lock");
+    sound.playSound("button_sound", 1);
+    timing.lock("key_swap", key_swap_duration);
+    timing.lock("animation", animation_duration);
+    effects.makeTween("slide_last_letter", screen_height, 0, animation_duration);
+    effects.start("slide_last_letter");
+    last_letter = current_letter;
+    int size = key_to_letter[letters[input_val]].size();
+    printf("The size is %lu\n", key_to_letter[letters[input_val]].size());
+    current_letter = key_to_letter[letters[input_val]][math_utils.randomInt(0, size)];
+    printf("The letter is %s\n", current_letter.c_str());
   }
 
   if (timing.locked("key_swap") && !timing.locked("animation") && !timing.locked("sound_lock")) {

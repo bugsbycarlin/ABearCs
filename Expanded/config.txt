@@ -1,0 +1,38 @@
+<section name="layout">
+  <param type="int" name="screen_width">1440</param>
+  <param type="int" name="screen_height">900</param>
+  <param type="bool" name="full_screen">false</param>
+  <param type="string" name="screen_color">#F0F0F0</param>
+
+  <param type="int" name="abearcs_picture_x">200</param>
+  <param type="int" name="abearcs_picture_y">250</param>
+  <param type="int" name="abearcs_letter_x">820</param>
+  <param type="int" name="abearcs_letter_y">260</param>
+  <param type="int" name="abearcs_word_x">820</param>
+  <param type="int" name="abearcs_word_y">460</param>
+
+  <param type="string" name="font_name">Fonts/Chewy.ttf</param>
+  <param type="int" name="letter_size">180</param>
+  <param type="int" name="word_size">120</param>   
+</section>
+
+<section name="animation">
+  <!-- ABearCs -->
+  <param type="float" name="animation_duration">0.5</param>
+  <param type="int" name="tween_type">1</param>
+  <param type="int" name="shake_width">6</param>
+  <param type="float" name="shake_duration">0.25</param>
+  <param type="float" name="squish_cycle">0.7</param>
+  <param type="float" name="squish_size">0.015</param>
+</section>
+
+<section name="input">
+  <param type="float" name="key_swap_duration">2.0</param>
+</section>
+
+<section name="sound">
+  <param type="float" name="sound_volume">1.0</param>
+  <param type="float" name="music_volume">1.0</param>
+</section>
+
+

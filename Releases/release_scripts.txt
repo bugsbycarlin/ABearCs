@@ -1,0 +1,1 @@
+./app --name ABearCs --program ../FamilyVersion/ABearCs --extra_files ../FamilyVersion/config.txt,../FamilyVersion/Sound,../FamilyVersion/Art,../FamilyVersion/Fonts --icon ../FamilyVersion/Release/icon_512x512.png --output_path /Volumes/littleguy/

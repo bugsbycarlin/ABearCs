@@ -1,7 +1,7 @@
 <section name="layout">
   <param type="int" name="screen_width">960</param>
   <param type="int" name="screen_height">600</param>
-  <param type="bool" name="full_screen">false</param>
+  <param type="bool" name="full_screen">true</param>
   <param type="string" name="screen_color">#F0F0F0</param>
 
   <param type="int" name="abearcs_picture_x">50</param>
@@ -24,6 +24,7 @@
 
 <section name="sound">
   <param type="float" name="sound_volume">1.0</param>
+  <param type="float" name="music_volume">1.0</param>
   <param type="float" name="sound_lock_duration">3.0</param>
 </section>
 
