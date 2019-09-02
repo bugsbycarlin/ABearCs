@@ -82,14 +82,14 @@ void ABearCs::initialize() {
   pictures["k"] = {"koala", "key"};
   pictures["l"] = {"lamp"};
   pictures["m"] = {"monkey"};
-  pictures["n"] = {"apple"};
+  pictures["n"] = {"noodles"};
   pictures["o"] = {"apple"};
   pictures["p"] = {"phone"};
   pictures["q"] = {"apple"};
   pictures["r"] = {"rhino", "rainbow"};
   pictures["s"] = {"apple"};
-  pictures["t"] = {"apple"};
-  pictures["u"] = {"apple"};
+  pictures["t"] = {"truck"};
+  pictures["u"] = {"umbrella"};
   pictures["v"] = {"apple"};
   pictures["w"] = {"watermelon"};
   pictures["x"] = {"apple"};
