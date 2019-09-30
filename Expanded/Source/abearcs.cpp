@@ -63,12 +63,10 @@ void ABearCs::initialize() {
   };
 
   pictures = {};
-  // pictures["a"] = {"apple", "airplane", "astronaut", "arrow"};
-  // pictures["b"] = {"bee", "bear", "balloon", "ball", "bike", "bus"};
-  // pictures["d"] = {"dog"};
-  // pictures["e"] = {"eggs"};
-  // pictures["f"] = {"flowers"};
-  // pictures["g"] = {"grapes"};
+  // "balloon"
+  // "dog"
+  // "flowers"
+  // "grapes"
   pictures["a"] = {"apple", "airplane"};
   pictures["b"] = {"bee", "bear", "ball", "bus", "bike"};
   pictures["c"] = {"carrot", "cloud", "crayons", "car", "cat", "cow"};
@@ -78,23 +76,23 @@ void ABearCs::initialize() {
   pictures["g"] = {"goat", "grapes"};
   pictures["h"] = {"hamburger"};
   pictures["i"] = {"iguana", "icecream"};
-  pictures["j"] = {"apple"};
+  pictures["j"] = {"juice"};
   pictures["k"] = {"koala", "key"};
   pictures["l"] = {"lamp"};
   pictures["m"] = {"monkey"};
   pictures["n"] = {"noodles"};
-  pictures["o"] = {"apple"};
+  pictures["o"] = {"orange", "octopus"};
   pictures["p"] = {"phone"};
-  pictures["q"] = {"apple"};
+  pictures["q"] = {"quilt"};
   pictures["r"] = {"rhino", "rainbow"};
-  pictures["s"] = {"apple"};
+  pictures["s"] = {"sad"};
   pictures["t"] = {"truck"};
   pictures["u"] = {"umbrella"};
-  pictures["v"] = {"apple"};
-  pictures["w"] = {"watermelon"};
-  pictures["x"] = {"apple"};
-  pictures["y"] = {"apple"};
-  pictures["z"] = {"apple"};
+  pictures["v"] = {"vulture"};
+  pictures["w"] = {"watermelon", "wolf"};
+  pictures["x"] = {"xylophone"};
+  pictures["y"] = {"yoga"};
+  pictures["z"] = {"zebra"};
 
   pictures["shapes"] = {
     "arrow",
