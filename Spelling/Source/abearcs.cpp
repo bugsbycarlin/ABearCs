@@ -59,49 +59,33 @@ void ABearCs::initialize() {
     "z"
   };
 
-  pictures = {};
-  // "balloon"
-  // "dog"
-  // "flowers"
-  // "grapes"
-  pictures["a"] = {"apple", "airplane"};
-  pictures["b"] = {"bee", "bear", "ball", "bus", "bike"};
-  pictures["c"] = {"carrot", "cloud", "crayons", "car", "cat", "cow"};
-  pictures["d"] = {"drum", "dinosaur", "ducks"};
-  pictures["e"] = {"elephant", "eggs"};
-  pictures["f"] = {"feather", "flowers"};
-  pictures["g"] = {"goat", "grapes"};
-  pictures["h"] = {"hamburger"};
-  pictures["i"] = {"iguana", "icecream"};
-  pictures["j"] = {"juice"};
-  pictures["k"] = {"koala", "key"};
-  pictures["l"] = {"lamp"};
-  pictures["m"] = {"monkey", "moon"};
-  pictures["n"] = {"noodles"};
-  pictures["o"] = {"orange", "octopus"};
-  pictures["p"] = {"phone"};
-  pictures["q"] = {"quilt"};
-  pictures["r"] = {"rhino", "rainbow"};
-  pictures["s"] = {"sad"};
-  pictures["t"] = {"truck"};
-  pictures["u"] = {"umbrella"};
-  pictures["v"] = {"vulture"};
-  pictures["w"] = {"watermelon", "wolf"};
-  pictures["x"] = {"xylophone"};
-  pictures["y"] = {"yoga"};
-  pictures["z"] = {"zebra"};
-
-  pictures["shapes"] = {
-    "arrow",
-    "circle",
-    "diamond",
-    "heart",
-    "hexagon",
-    "octagon",
-    "pentagon",
-    "square",
-    "star",
-    "triangle"
+  pictures = {
+    "apple", "airplane", "arrow",
+    "bee", "bear", "ball", "bus", "bike",
+    "carrot", "cloud", "crayons", "car", "cat", "cow", "circle",
+    "drum", "dinosaur", "ducks", "diamond", "dog",
+    "elephant", "eggs",
+    "feather", "flowers",
+    "goat", "grapes",
+    "hamburger", "heart", "hexagon", "horse",
+    "iguana", "icecream",
+    "juice",
+    "koala", "key",
+    "lamp",
+    "monkey", "moon",
+    "noodles",
+    "orange", "octopus", "octagon",
+    "phone", "pentagon", "puppy", "pig",
+    "quilt",
+    "rhino", "rainbow",
+    "sad", "square", "star", "sheep", "sun",
+    "truck", "triangle",
+    "umbrella",
+    "vulture",
+    "watermelon", "wolf",
+    "xylophone",
+    "yoga",
+    "zebra"
   };
 
   colors = {
@@ -117,15 +101,7 @@ void ABearCs::initialize() {
     "#835c3b"
   };
 
-  for (int i = 0; i < 26; i++) {
-    string letter = letters[i];
-    sound.addSound(letter, "Sound/Letters/" + letter + ".wav");
-    for (int j = 0; j < pictures[letter].size(); j++) {
-      string picture = pictures[letter][j];
-      graphics.addImage(picture, "Art/" + picture + ".png");
-    }
-  }
-  graphics.addImages("Art/", pictures["shapes"]);
+  graphics.addImages("Art/", pictures);
 
   effects.makeOscillation("squish", hot_config.getFloat("animation", "squish_size"), hot_config.getFloat("animation", "squish_cycle"));
   effects.start("squish");
@@ -138,11 +114,11 @@ void ABearCs::initialize() {
     "#000000"
   );
 
-  word_box = new Textbox(
+  small_letter_box = new Textbox(
     hot_config.getString("layout", "font_name"),
-    hot_config.getInt("layout", "word_size"),
+    hot_config.getInt("layout", "small_letter_size"),
     "X",
-    (position) {word_x, word_y},
+    (position) {letter_x, letter_y},
     "#000000"
   );
 
@@ -169,6 +145,11 @@ void ABearCs::logic() {
         current_word += letters[i];
         input.lockInput(0.1);
       }
+    }
+
+    if (input.keyDown("backspace") && current_word.length() > 0) {
+      current_word = current_word.substr(0, current_word.length() - 1);
+      input.lockInput(0.1);
     }
 
     if (input.keyDown("space")) {
@@ -200,9 +181,15 @@ void ABearCs::render() {
       //boost::to_upper(current_word);
       graphics.setColor("#000000", 1.0);
       string output_word = boost::to_upper_copy(current_word);
-      letter_box->setText(output_word);
-      letter_box->setPosition({letter_x, letter_y});
-      letter_box->draw();
+      if (current_word.length() < 5) {
+        letter_box->setText(output_word);
+        letter_box->setPosition({letter_x, letter_y});
+        letter_box->draw();
+      } else {
+        small_letter_box->setText(output_word);
+        small_letter_box->setPosition({(int) (letter_x - current_word.length() * 10), letter_y});
+        small_letter_box->draw();
+      }
     }
 
     if (current_picture.length() > 0 && graphics.checkImage(current_picture)) {

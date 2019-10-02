@@ -1,7 +1,7 @@
 <section name="layout">
   <param type="int" name="screen_width">1440</param>
   <param type="int" name="screen_height">900</param>
-  <param type="bool" name="full_screen">true</param>
+  <param type="bool" name="full_screen">false</param>
   <param type="string" name="screen_color">#F0F0F0</param>
 
   <param type="int" name="abearcs_picture_x">820</param>
@@ -11,9 +11,9 @@
   <param type="int" name="abearcs_word_x">200</param>
   <param type="int" name="abearcs_word_y">460</param>
 
-  <param type="string" name="font_name">Fonts/CarterOne.ttf</param>
-  <param type="int" name="letter_size">180</param>
-  <param type="int" name="word_size">120</param>   
+  <param type="string" name="font_name">Fonts/inhouseeditionexpand.ttf</param>
+  <param type="int" name="letter_size">210</param>
+  <param type="int" name="small_letter_size">180</param> 
 </section>
 
 <section name="animation">

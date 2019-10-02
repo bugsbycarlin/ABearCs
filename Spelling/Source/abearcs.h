@@ -37,41 +37,12 @@ class ABearCs : public Screen {
 
   vector<string> letters;
 
-  map<string, vector<string>> pictures;
+  vector<string> pictures;
 
   Textbox* letter_box;
-  Textbox* word_box;
+  Textbox* small_letter_box;
 
   vector<string> colors;
-
-  // std::string pictures[26] = {
-  //   "apple",
-  //   "bear",
-  //   "cat",
-  //   "dog",
-  //   "eggs",
-  //   "flowers",
-  //   "grapes",
-  //   "hamburger",
-  //   "icecream",
-  //   "juicebox",
-  //   "key",
-  //   "lemon",
-  //   "monkey",
-  //   "nixon",
-  //   "orange",
-  //   "pizza",
-  //   "queen",
-  //   "rainbow",
-  //   "strawberry",
-  //   "trees",
-  //   "umbrella",
-  //   "viola",
-  //   "watermelon",
-  //   "xylophone",
-  //   "yoga",
-  //   "zebra"
-  // };
 
   string mode;
 
